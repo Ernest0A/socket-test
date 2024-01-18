@@ -1,7 +1,7 @@
 export default {
     apps : [
         {
-          name: "backend_chat_dev",
+          name: "socket-test",
           script: "./app.mjs",
           watch: true,
           env: {}

@@ -1,3 +1,5 @@
+import path from 'path'
+import { fileURLToPath } from 'url'
 import express from 'express'
 import http from 'http'
 import cors from 'cors'
@@ -11,17 +13,21 @@ class Server {
 
         this.setupMiddlewares()
         this.routes()
+
+    this.__filename = fileURLToPath(import.meta.url)
+    this.__dirname = path.dirname(this.__filename)
     }
 
     setupMiddlewares() {
         console.log('cors origin');
         // Configuración de CORS
         this.app.use(cors(wsCors));
+        this.app.use(express.static('public'))
       }
 
     routes(){
         this.app.use('/', (req, res)=>{
-            res.send('<h1>socket server listen<h1/>')
+            // res.send('socket server listen')
         })
     }  
 
