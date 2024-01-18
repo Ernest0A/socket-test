@@ -23,6 +23,7 @@ class Server {
         // Configuración de CORS
         this.app.use(cors(wsCors));
         this.app.use(express.static('public'))
+        this.app.use('/socket.io', express.static(this.__dirname + '/node_modules/socket.io/client-dist'));
       }
 
     routes(){
